@@ -29,7 +29,15 @@ jobs:
           path: ~/.npm
           key: npm-${{ runner.os }}-${{ hashFiles('**/package.json') }}
           restore-keys: npm-${{ runner.os }}-
-      - name: Install dependencies
+      - name: Install (packages/api_tests)
+        working-directory: packages/api_tests
         run: npm install
-      - name: No runnable npm scripts
-        run: echo "This repo declares no lint/build/typecheck scripts."
+      - name: Install (packages/smoke_tests)
+        working-directory: packages/smoke_tests
+        run: npm install
+      - name: Install (packages/system_critical_flows)
+        working-directory: packages/system_critical_flows
+        run: npm install
+      - name: Install (packages/testing)
+        working-directory: packages/testing
+        run: npm install
